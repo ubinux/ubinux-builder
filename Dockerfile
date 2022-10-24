@@ -43,3 +43,8 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+
+RUN useradd -m ubinux \
+  && echo "%ubinux    ALL=(ALL)    NOPASSWD:    ALL" >> /etc/sudoers.d/ubinux \
+  && chmod 0440 /etc/sudoers.d/ubinux
+USER ubinux
